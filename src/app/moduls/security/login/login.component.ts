@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import validation from './validations/validations';
+import {FormControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 @Component ({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +13,6 @@ export class LoginComponent implements OnInit {
   });
   submitted = false;
   constructor(private formBuilder: FormBuilder) { }
-
   ngOnInit(): void {
     this.form = this.formBuilder.group(
       {
@@ -28,11 +26,7 @@ export class LoginComponent implements OnInit {
           ]
         ],
         confirmPassword: ['', Validators.required],
-      },
-  {
-    Validators:[validation.match('password','confirmPassword')]
-  }
-  );
+      });
   }
 
   get f(): { [key: string]: AbstractControl } {
